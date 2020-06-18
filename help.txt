@@ -1,0 +1,27 @@
+celery -A avtosticker2 flower
+celery -A avtosticker2 worker -l info
+pip freeze > requirements.txt
+heroku apps:destroy --app serene-everglades-91657  --confirm serene-everglades-91657
+видалить з Heroku
+
+$ git init
+Initialized empty Git repository in ~/djangogirls/.git/
+$ git config --global user.name "Your Name"
+$ git config --global user.email you@example.com
+
+.gitignore
+*.pyc
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+
+$ git status
+$ git add --all .
+$ git commit -m "My Django Girls app, first commit"
+
+
+git remote add origin https://github.com/<ваше-github-ім'я>/my-first-blog.git
+git push origin master --force
+Розгортання на GitHub

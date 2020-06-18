@@ -1,0 +1,23 @@
+{% load bootstrap4 %}
+{% load mptt_tags %}
+
+
+
+{% recursetree categories %}
+  <div class="dropdown">
+  <button class="btn btn-secondary dropright" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    {{ node.name }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+    <a class="dropdown-item" href="{% url 'shop:category_list'  node.slug %}">{{ node.name }}</a>
+    {% for child in node.children.all %}
+    <a class="dropdown-item" href="{% url 'shop:category_list_child'  child.slug %}">{{ child.name }}</a>
+    {% endfor %}
+
+  </div>
+</div>
+    <br>
+
+ {% endrecursetree %}
+

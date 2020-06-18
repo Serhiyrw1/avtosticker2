@@ -1,0 +1,49 @@
+{% extends 'shop/base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block sidebar %}
+ {% include 'shop/category_tree.html' %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<h1 class="text-center">{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+        {% for product in products %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 "  >
+                      <div class="shadow-img">
+  <!--                    <div class="shadow p-0 mb-0 bg-black rounded"  >  -->
+                          <a href="{{ product.get_absolute_url }}">
+                          <img src="{% if product.image %}{% thumbnail product.image 'default' %}
+                            {% else %}{% static "img/no_image.png" %}{% endif %}"
+                         class="img-thumbnail  mx-auto d-block" style=" padding: 0" >
+                         </a>
+
+ <!--                       </div>  -->
+                      </div>
+                      <div>
+                        <a  class="nameprice" href="{{ product.get_absolute_url }}">
+
+                            <p class="text-center" style="margin-bottom: 0.01rem">    {{ product.name }} </p></a>
+                          <span class="nameprice">
+
+                          <p class="text-center" style="margin-bottom: 0.03rem">  {{ product.price }} грн.</p>
+                          </span>
+                          </div>
+            </div>
+        {% endfor %}
+        </div>
+
+<input type="button" onclick="history.back();" value="Назад"/>
+    </div>
+    {% include "shop/inc/_pagination.html" with page=products %}
+{% endblock %}

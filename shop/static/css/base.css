@@ -1,0 +1,152 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+.sidebarbg {
+ 	background:#EEF1F1;
+}
+
+.contentbg {
+	background:#fff;
+}
+
+.sidebarstyle {
+	 font-size:0.75rem ;
+	 margin:0;
+        padding:0;
+        color: #393185;
+        text-align: center;
+}
+
+.sidebarstyle div button a {
+	 margin:1rem;
+	color: #000;
+	text-align: center;
+}
+
+.sidebarstyle div button a:hover {
+	 color: #fff;
+	 text-decoration:none;
+
+}
+
+.sidebarstyle div button  {
+	margin-bottom:0.2rem;
+	 background:#fff;
+	
+}
+
+.nameprice {
+	font-size:3.0vh ;	
+}
+
+body { 
+    margin:0;
+    padding:0;
+    font-family:helvetica, sans-serif; 
+}
+
+a {
+    text-decoration:none;
+    color:#5993bb;
+}
+
+.shadow-img {
+	width: 80%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+                   -23px 0 20px -23px rgba(0, 0, 0, .8),
+                   23px 0 20px -23px rgba(0, 0, 0, .8),
+                   0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.shadow-img:hover {
+width: 80%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0;
+   
+  
+  box-shadow: 0 0 5px 5px #B2B3B3 ,
+		    0 0 5px #B2B3B3 inset;	
+	
+}
+
+
+
+
+
+.input-number {
+position: relative;
+display: inline-block;
+}
+ 
+.form-control.form-number {
+width: 110px;
+margin-right: 12px;
+border: 1px solid transparent;
+text-align: center;
+height: 50px;
+float: left;
+background: #ccc;
+}
+ 
+.btn-count-minus {
+bottom: 0;
+}
+.btn-count-plus {
+top: 0;
+}
+ 
+.btn-count {
+position: absolute;
+right: 0;
+width: 30px;
+height: 50%;
+background: #60a645;
+border-radius: 0;
+text-align: center;
+line-height: 25px;
+font-size: 14px;
+color: #fff;
+z-index: 9999;
+cursor: pointer;
+}
+ 
+.btn-default {
+font-size: 14px;
+color: rgb(255, 255, 255);
+font-weight: bold;
+text-transform: uppercase;
+vertical-align: top;
+display: inline-block;
+background-color: rgb(96, 166, 69);
+padding: 0 30px;
+border-radius: 3px;
+}
+ 
+.btn-default:hover{
+background-color:#7ad258;
+}
+.btn-default {
+height: 50px;
+line-height: 50px;
+}
+ 
+a {
+text-decoration: none;
+}
+
+
+/* Äëÿ Chrome */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+/* Äëÿ Firefox */
+input[type=number]{
+  -moz-appearance: textfield;
+}
