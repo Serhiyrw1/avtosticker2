@@ -1,0 +1,104 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+  {{ product.slug }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include "shop/inc/_nav.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+  <div class="product-detail">
+
+    <img src="{% if product.image %}{% thumbnail product.image 'detail' %}{% else %}{% static "img/no_image.png" %}{% endif %}"
+     class="img-thumbnail  d-block" >
+
+    <h1>{{ product.name }}</h1>
+
+    <p class="price">₴ {{ product.price }}</p>
+
+
+  <form action="{% url "cart:cart_add" product_id=product.id   %}"  method="post" id="form_buying_product" class="form-inline">
+     <input type="button" value="-" onClick="change('number',0,100,-1);"/>
+      <div class="form-group">
+     <input   class="form-control" name="number" id="number" value="1">
+
+      </div>
+
+    <div class="form-group">
+<input type="button" value="+" onClick="change('number',0,100, 1);"/>
+    <button type="submit" id="submit-btn" class="btn btn-outline-success btn-buy"
+        data-product_id = "{{ product.id }}"
+        data-product_name = "{{ product.name }}"
+        data-quantity = "{{ quantity }}"
+         data-product_price = "{{ product.price }}"
+
+>
+
+{% csrf_token %}
+
+
+        КУПИТИ
+    </button>
+    </div>
+
+  </form>
+
+   <p class="text-right">
+
+    <a href="/" class="button light">Купити ще...  </a>
+       <a href="{% url "cart:cart_detail" %}" class="button" >   Перейти до кошика</a>
+
+
+  </p>
+
+  <br>
+
+
+
+
+
+ <!--   <form action="{% url "cart:cart_add" product_id=product.id   %}"  method="post"  >
+
+        {{ cart_product_form }}
+        {% csrf_token %}
+
+
+        <input  type="submit" value="Add to cart" class="btn btn-primary btn-buy">
+
+
+    </form>  -->
+
+    {{ product.description|linebreaks }}
+     </div>
+    <input type="button" onclick="history.back();" value="Назад"/>
+    </div>
+
+
+<form size="small" action="{% url "cart:cart_minus" product_id=product.id %}" method="post">
+
+
+               {{ item.update_quantity_form.minus }}
+              <input size="small" type="submit" value="-">
+
+                  {% csrf_token %}
+              </form></td>
+            <td>  <form action="{% url "cart:cart_add" product_id=product.id %}" method="post">
+              {{ update_quantity_form.quantity }}
+                  {{ item.update_quantity_form.update }}
+                 <input   class="form-control" name="number" id="number" value="1">
+                  <input type="submit" value="Update">
+                  {% csrf_token %}
+              </form></td>
+             <td> <form action="{% url "cart:cart_plus" product_id=product.id %}" method="post">
+                  {{ item.update_quantity_form.plus }}
+                  <input type="submit" value="+">
+                  {% csrf_token %}
+              </form></td>
+
+
+{% endblock %}

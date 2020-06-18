@@ -1,0 +1,5 @@
+celery -A avtosticker2 flower
+celery -A avtosticker2 worker -l info
+pip freeze > requirements.txt
+heroku apps:destroy --app serene-everglades-91657  --confirm serene-everglades-91657
+видалить з Heroku

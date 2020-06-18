@@ -1,0 +1,126 @@
+{% load static %}
+{% load bootstrap4 %}
+{% load mptt_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <title>{% block title %}Інтернет магазин автонаклеєк{% endblock %}</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <script src="/static/js/base.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="margin: 1rem 1rem 1rem 1rem">
+  <a class="navbar-brand" href="/">Головна</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      {% if request.user.is_authenticated %}
+
+         <li class="nav-item active">
+        <a class="nav-link" >Привіт {{ request.user.username }} ! </a>
+      </li>
+
+         <li class="nav-item active">
+        <a class="nav-link" href="#">Вихід </a>
+      </li>
+
+          <li class="nav-item active">
+        <a class="nav-link" href="#">Профіль</a>
+      </li>
+
+     {% else %}
+        <li class="nav-item active">
+        <a class="nav-link" href="#">Вхід <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link" href="#">Реєстрація <span class="sr-only">(current)</span></a>
+      </li>
+
+      {% endif %}
+
+
+
+    </ul>
+
+
+
+  </div>
+
+{% include 'cart/navcart.html' %}
+
+
+ <form action="#" method="get" class="form-inline my-2 my-lg-0">
+
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Пошук</button>
+    </form>
+</nav>
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin: 0 1rem 0.3rem 1rem" >
+  <a class="navbar-brand" href="/" style="padding: 2px">ІНТЕРНЕТ МАГАЗИН</a>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+
+
+
+    </ul>
+    <span class="navbar-text">
+     <div class="cart">
+      {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                    Ваша корзина:
+                    <a href="{% url "cart:cart_detail" %}">
+                      {{ total_items }} шт.  на суму
+                      ₴ {{ cart.get_total_price }}
+                    </a>
+                {% else %}
+                    Ваша корзина порожня.
+                {% endif %}
+            {% endwith %}
+     </div>
+    </span>
+  </div>
+</nav>
+
+<div class="container-fluid" >
+    <div class="row" style="margin: 0; padding: 0">
+  <div class="sidebarbg  col-md-2">{% block sidebar %}
+
+
+
+
+  {% endblock %}</div>
+  <div class="contentbg  col-md-8" >{% block content %}{% endblock %}</div>
+  <div class="sidebarbg  col-md-2">{% block rigthbar%}{% endblock %}</div>
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+<script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

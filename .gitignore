@@ -1,0 +1,7 @@
+*.pyc
+avtosticker2/
+__pycache__/
+*.sqlite3
+/static
+.DS_Store
+
